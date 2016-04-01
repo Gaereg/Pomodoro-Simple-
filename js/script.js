@@ -1,12 +1,12 @@
 $(document).ready(function(){ // Evenement jQuery
    window.play = false;
 
-   $('#play').click(function(){ !play&&$('#task').val()!= ''?timer.play():$('#task').val('Entrez Tache'); });
+   $('#play').click(function(){ !play&&$('#task').val()!= ''?timer.play():null; });
    $('#pause').click(function(){ timer.pause(); });
    $('#stop').click(function(){ timer.stop(); });
    console.log($('#task').val()==' ');
    $('form').submit(function(){
-      !play&&$('#task').val()!= ''?timer.play():$('#task').val('Entrez Tache'); // Ternaire, si variable play==false et tache remplis lance la function play
+      !play&&$('#task').val()!= ''?timer.play():null; // Ternaire, si variable play==false et tache remplis lance la function play
       return false
 });
 });
@@ -43,6 +43,7 @@ var timer = { // Object timer avec ses méthode
       } else { // si timer pause fini, stop le timer
          alert('Fini la pause');
          this.stop();
+         this.$repo = false;
       }
 
       if (this.$repo){ //Créer une chaine de caractère en fonction de si on est au boulot ou en pause
